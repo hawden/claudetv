@@ -31,23 +31,25 @@ brings them back.
 
 ```sh
 ./claudetv.sh scan                         # see every Amazon package and its state
-./claudetv.sh --dry-run debloat            # preview: telemetry + ads lists
+./claudetv.sh --dry-run debloat            # preview: telemetry + ads + amazon-apps
 ./claudetv.sh debloat                      # do it (backs up package state first)
-./claudetv.sh debloat amazon-apps alexa    # optional extra lists
+./claudetv.sh debloat alexa                # optional extra list
 ./claudetv.sh restore                      # undo everything
 ./claudetv.sh restore com.amazon.bueller.music   # undo one package
 adb reboot
 ```
 
 The lists in [`lists/`](lists) are plain text, one package per line, so edit them freely. Packages
-not on your firmware are skipped. Anything in `lists/protected.txt` (home screen, Settings,
-Appstore, remote pairing) is never touched, even if you add it to another list.
+not on your firmware are skipped. Two lists are never disabled, even if a package appears elsewhere:
+
+- `lists/keep.txt`: your choices. Currently **Prime Video** and **Wi-Fi password sync**.
+- `lists/protected.txt`: things the stick needs (home screen, Settings, Appstore, remote pairing).
 
 | List | What it disables | Default? |
 |---|---|---|
-| `telemetry` | Metrics, crash reports, logging, Wi-Fi password sync | ✅ |
+| `telemetry` | Metrics, crash reports, logging | ✅ |
 | `ads` | Sponsored content, promo notifications, GameCircle | ✅ |
-| `amazon-apps` | Photos, Music, Freevee, **Prime Video** (edit before running if you use them) | |
+| `amazon-apps` | Amazon Kids, Shopping, Music, Photos, Freevee, Silk browser | ✅ |
 | `alexa` | Alexa (breaks voice search) | |
 | `updates` | System updates. ⚠️ Also blocks security fixes | |
 

@@ -5,4 +5,3 @@ com.amazon.device.crashmanager       # Crash report uploader
 com.amazon.dp.logger                 # Device logging
 com.amazon.logan                     # Log collection
 com.amazon.device.logmanager         # Log manager
-com.amazon.wifilocker                # Uploads your saved Wi-Fi passwords to your Amazon account

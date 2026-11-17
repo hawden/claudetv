@@ -8,7 +8,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LISTS="$ROOT/lists"
 BACKUPS="$ROOT/backups"
-DEFAULT_LISTS=(telemetry ads)
+DEFAULT_LISTS=(telemetry ads amazon-apps)
 DRY_RUN=0
 ASSUME_YES=0
 
@@ -38,7 +38,7 @@ Set CLAUDETV_DEVICE=<serial or ip:port> if more than one device is connected.
 EOF
 }
 
-list_names() { for f in "$LISTS"/*.txt; do basename "$f" .txt; done | grep -vx protected; }
+list_names() { for f in "$LISTS"/*.txt; do basename "$f" .txt; done | grep -vxE "protected|keep"; }
 
 # Print the package names in a list file (comments and blank lines removed).
 read_list() {
@@ -48,6 +48,7 @@ read_list() {
 }
 
 is_protected() { read_list protected | grep -qxF "$1"; }
+is_kept()      { read_list keep | grep -qxF "$1"; }
 
 # Package-state helpers. `pm list packages` prints "package:<name>".
 pkgs()          { ash pm list packages "$@" | sed -n 's/^package://p'; }
@@ -128,6 +129,7 @@ cmd_backup() {
 disable_pkg() {
   local p="$1" out
   if is_protected "$p"; then echo "  protected     $p (never touched)"; return; fi
+  if is_kept "$p"; then echo "  kept          $p (in keep.txt)"; return; fi
   if ! known_to_user "$p"; then echo "  not present   $p"; return; fi
   if ! installed "$p"; then echo "  already off   $p"; return; fi
   if grep -qxF "$p" <<<"$DISABLED"; then echo "  already off   $p"; return; fi
@@ -146,7 +148,7 @@ cmd_debloat() {
   local lists=("$@"); [[ ${#lists[@]} -gt 0 ]] || lists=("${DEFAULT_LISTS[@]}")
   local l
   for l in "${lists[@]}"; do
-    [[ "$l" != protected ]] || die "'protected' is the list of packages never to touch"
+    [[ "$l" != protected && "$l" != keep ]] || die "'$l' lists packages that are never disabled"
     read_list "$l" >/dev/null   # validate names before changing anything
   done
   if printf '%s\n' "${lists[@]}" | grep -qx updates; then
