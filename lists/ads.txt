@@ -1,0 +1,6 @@
+# Promotions, sponsored content and push marketing.
+# Note: the sponsored rows on the home screen are drawn by Amazon's own launcher, which can't be
+# safely disabled. A custom launcher plus DNS ad blocking is what actually gets rid of them.
+com.amazon.kso                       # Sponsored content / special offers (not on every firmware)
+com.amazon.hedwig                    # Amazon promotional push notifications
+com.amazon.ags.app                   # GameCircle (unused, phones home)

@@ -1,0 +1,5 @@
+# Amazon's own apps. Disable only the ones you don't use (edit this file to keep any you want).
+com.amazon.bueller.photos            # Amazon Photos (also the photo screensaver)
+com.amazon.bueller.music             # Amazon Music
+com.amazon.imdb.tv.android.app       # Freevee / IMDb TV
+com.amazon.amazonvideo.livingroom    # Prime Video. Keep this if you watch Prime!

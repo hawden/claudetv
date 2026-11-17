@@ -1,0 +1,8 @@
+# Telemetry, logging and crash reporting. Safe to disable; nothing you use depends on these.
+com.amazon.client.metrics            # Usage metrics uploader
+com.amazon.client.metrics.api        # Metrics API used by Amazon apps
+com.amazon.device.crashmanager       # Crash report uploader
+com.amazon.dp.logger                 # Device logging
+com.amazon.logan                     # Log collection
+com.amazon.device.logmanager         # Log manager
+com.amazon.wifilocker                # Uploads your saved Wi-Fi passwords to your Amazon account
