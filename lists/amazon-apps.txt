@@ -1,0 +1,7 @@
+# Amazon's preinstalled apps. To keep one, move it to keep.txt (or delete its line here).
+com.amazon.tahoe                     # Amazon Kids (FreeTime)
+com.amazon.shoptv.client             # Amazon Shopping on TV
+com.amazon.bueller.music             # Amazon Music
+com.amazon.bueller.photos            # Amazon Photos (also the photo screensaver)
+com.amazon.imdb.tv.android.app       # Freevee / IMDb TV
+com.amazon.cloud9                    # Silk browser

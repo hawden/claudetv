@@ -1,0 +1,5 @@
+# System updates. Disabling these stops Amazon re-enabling bloat or re-locking things in an update,
+# BUT you also stop getting security fixes. Only use this if you understand that trade-off.
+com.amazon.device.software.ota           # OTA update service
+com.amazon.device.software.ota.override  # OTA override service
+com.amazon.tv.forcedotaupdater.v2        # Forced update prompt

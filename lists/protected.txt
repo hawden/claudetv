@@ -1,0 +1,13 @@
+# Packages the toolkit refuses to touch: disabling these can leave the stick unusable.
+com.amazon.tv.launcher               # Amazon home screen (Settings lives inside it)
+com.amazon.tv.settings
+com.amazon.tv.settings.v2
+com.amazon.tv.oobe                   # Setup / recovery flow
+com.amazon.venezia                   # Appstore: needed to install and update apps
+com.amazon.device.controllermanager  # Remote and controller pairing
+com.amazon.device.messaging          # Push messaging used by third-party apps
+android
+com.android.systemui
+com.android.settings
+com.android.providers.settings
+com.android.shell
